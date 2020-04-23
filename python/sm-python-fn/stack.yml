@@ -1,0 +1,14 @@
+version: 1.0
+provider:
+  name: openfaas                                  
+  gateway: http(s)://VEBA_FQDN        # OpenFaaS URL (VEBA endpoint) 
+functions:
+  sm-fn-name:                         # name of the function (unique in your k8s cluster)
+    lang: python
+    handler: ./handler                # folder name which has your scripts
+    image: docker/sm-veba-fn:latest   # docker container to pull for this deployment
+    environment:
+      write_debug: true
+      read_debug: true
+    annotations:
+      topic: "VmPoweredOnEvent"       # the event which should trigger this function
