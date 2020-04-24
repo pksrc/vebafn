@@ -8,8 +8,8 @@ This function helps users <do what>. Please go through the steps below to deploy
 Step 1 - Clone repo
 
 ```
-git clone <git-clone-url>
-cd <function-folder-path>
+git clone git@github.com:pksrc/vebafn.git vebafn
+cd vebafn/python/sm-python-fn
 ```
 
 Step 2 - View the `stack.yml` and modify file as required
