@@ -10,7 +10,7 @@ Step 1 - Clone repo
 
 ```bash
 git clone git@github.com:pksrc/vebafn.git vebafn
-cd vebafn/python/md-python-fn
+cd vebafn/python/lg-python-fn
 ```
 
 Step 2 - View the `stack.yml` and modify file as required
@@ -21,19 +21,21 @@ Step 2 - View the `stack.yml` and modify file as required
 version: 1.0
 provider:
   name: openfaas                                  
-  gateway: <http(s)://VEBA_FQDN>        # OpenFaaS URL (VEBA endpoint) 
+  gateway: https://veba-dev         # OpenFaaS URL (VEBA endpoint) 
 functions:
-  <md-fn-name>:                         # name of the function (unique in your k8s cluster)
-    lang: python
-    handler: ./handler                  # folder name which has your scripts
-    image: <docker/md-veba-fn>:latest   # docker container to pull for this deployment
+  lg-fn-name:                       # name of the function (unique in your k8s cluster)
+    lang: python3
+    handler: ./handler              # folder name which has your scripts
+    image: pkbu/lg-faas-fn:latest   # docker container to pull for this deployment
     environment:
       write_debug: true
       read_debug: true
+      combine_output: false         # env variable allows us to use syserr to print to console while sysout is returned back to OpenFaaS
+      insecure_ssl: true            # env variable to let us work with self signed certs
     secrets:
-      - config                          # configuration for the function
+      - config                      # configuration for the function
     annotations:
-      topic: "VmPoweredOffEvent"        # comma separated events that trigger this fn
+      topic: "VmPoweredOffEvent"    # comma separated events that trigger this fn
 ```
 
 Step 3 - View and edit the `config.json` 
@@ -64,10 +66,10 @@ Step 5 - Deploy function to vCenter Event Broker Appliance
 faas-cli deploy -f stack.yml --tls-no-verify
 ```
 
-Step 6 - Tail the logs of the <md-fn-name> function
+Step 6 - Tail the logs of the <lg-fn-name> function
 
 ```bash 
-faas-cli logs <md-fn-name> --tls-no-verify
+faas-cli logs <lg-fn-name> --tls-no-verify
 ```
 
 Step 7 - Trigger the vCenter Event and you should see output like the following in the console:
@@ -125,14 +127,14 @@ Deployed. 202 Accepted.
 
 ### Trigger the function
 
-<Do something>, to trigger the function via a `(DRS)VmPoweredOnEvent`. You should see <what is the function expected to do>
+<Do something>, to trigger the function via a `<event>`. You should see <what is the function expected to do>
 
 ## Troubleshooting the function
 
-If you function is not working as intended, tail the logs of the <md-fn-name> function using faas-cli as show below. 
+If you function is not working as intended, tail the logs of the <lg-fn-name> function using faas-cli as show below. 
 
 ```
-faas-cli logs <md-fn-name> --tls-no-verify
+faas-cli logs <lg-fn-name> --tls-no-verify
 ```
 
 If your function is not getting invoked, verify:

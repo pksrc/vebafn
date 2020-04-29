@@ -4,9 +4,9 @@ provider:
   gateway: http(s)://VEBA_FQDN        # OpenFaaS URL (VEBA endpoint) 
 functions:
   sm-fn-name:                         # name of the function (unique in your k8s cluster)
-    lang: python
+    lang: python3
     handler: ./handler                # folder name which has your scripts
-    image: docker/sm-veba-fn:latest   # docker container to pull for this deployment
+    image: pkbu/sm-faas-fn:latest     # docker container to pull for this deployment
     environment:
       write_debug: true
       read_debug: true
