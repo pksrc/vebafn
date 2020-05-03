@@ -1,0 +1,30 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://pdotk.ddns.net
+functions:
+  powercli-echo:
+    lang: powercli
+    handler: ./echo
+    image: pkbu/veba-powercli-echo:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: true
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-danger:
+    lang: powercli
+    handler: ./run
+    image: pkbu/veba-powercli-danger:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: true
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent

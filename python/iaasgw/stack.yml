@@ -1,0 +1,19 @@
+version: 1.0
+provider:
+  name: openfaas                                  
+  gateway: https://pdotk.ddns.net        # OpenFaaS URL (VEBA endpoint) 
+functions:
+  python-iaasgw:                       # name of the function (unique in your k8s cluster)
+    lang: python3
+    handler: ./handler              # folder name which has your scripts
+    image: pkbu/veba-python-iaasgw:latest   # docker container to pull for this deployment
+    environment:
+      read_timeout: 25s
+      write_timeout: 25s
+      exec_timeout: 25s
+      write_debug: true
+      read_debug: true
+      combine_output: false         # env variable allows us to use syserr to print to console while sysout is returned back to OpenFaaS
+      insecure_ssl: true            # env variable to let us work with self signed certs
+    annotations:
+      topic: "VmPoweredOffEvent"    # comma separated events that trigger this fn

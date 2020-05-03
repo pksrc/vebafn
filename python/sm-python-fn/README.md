@@ -31,7 +31,7 @@ functions:
       topic: "VmPoweredOffEvent"         # comma separated events that trigger this fn
 ```
 
-Step 3 - Login to the OpenFaaS gateway on vCenter Event Broker Appliance
+Step 3 - Login to the OpenFaaS gateway on VMware Event Broker Appliance
 
 ```
 export OPENFAAS_URL=https://veba-fqdn
@@ -39,7 +39,7 @@ export OPENFAAS_URL=https://veba-fqdn
 faas-cli login --username admin --password-stdin --tls-no-verify
 ```
 
-Step 4 - Deploy function to vCenter Event Broker Appliance
+Step 4 - Deploy function to VMware Event Broker Appliance
 
 ```
 faas-cli deploy -f stack.yml --tls-no-verify

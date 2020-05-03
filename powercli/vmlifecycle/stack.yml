@@ -1,0 +1,125 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://pdotk.ddns.net
+functions:
+  powercli-createvm:
+    lang: powercli
+    handler: ./createvm
+    image: pkbu/veba-powercli-createvm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: false
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-clonevm:
+    lang: powercli
+    handler: ./clonevm
+    image: pkbu/veba-powercli-clonevm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: false
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-vmclonetemplate:
+    lang: powercli
+    handler: ./vmclonetemplate
+    image: pkbu/veba-powercli-vmclonetemplate:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: true
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-poweronvm:
+    lang: powercli
+    handler: ./poweronvm
+    image: pkbu/veba-powercli-poweronvm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: false
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-poweroffvm:
+    lang: powercli
+    handler: ./poweroffvm
+    image: pkbu/veba-powercli-poweroffvm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: false
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-rebootvm:
+    lang: powercli
+    handler: ./rebootvm
+    image: pkbu/veba-powercli-rebootvm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: false
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-deletevm:
+    lang: powercli
+    handler: ./deletevm
+    image: pkbu/veba-powercli-deletevm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: false
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
+  powercli-setvm:
+    lang: powercli
+    handler: ./setvm
+    image: pkbu/veba-powercli-setvm:latest
+    environment:
+      write_debug: true
+      read_debug: true
+      function_debug: true
+      read_timeout: 20s
+      write_timeout: 20s
+      exec_timeout: 20s
+    secrets:
+      - vcconfig
+    annotations:
+      topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
