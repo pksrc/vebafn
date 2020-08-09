@@ -1,0 +1,4 @@
+[pagerduty]
+routing_key = "<replace with your routing key>",
+event_action = "trigger"
+
