@@ -1,7 +1,6 @@
 package function
 
 import (
-	"log"
 	"time"
 
 	"github.com/vmware/govmomi/vim25/types"
@@ -26,20 +25,9 @@ type vapiDetails struct {
 	authToken   string
 }
 
-type faasResp struct {
-	status  string
-	message string
-}
-
-type logLevel struct {
-	info *log.Logger
-	warn *log.Logger
-	err  *log.Logger
-}
-
 // cloudEvent is a subsection of a Cloud Event.
 type cloudEvent struct {
-	Data    types.Event `json:"data"`
+	Data    types.Event
 	Source  string
 	Subject string
 }

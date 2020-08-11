@@ -20,7 +20,6 @@ const (
 	pagerdutyApiPath = "https://events.pagerduty.com/v2/enqueue"
 	pdConfigPath     = "/var/openfaas/secrets/pdconfig"
 
-	// TODO: implement background colors for debug log
 	// Background colors for debug messages.
 	bgcHeader    = "\033[95m"
 	bgcOkBlue    = "\033[94m"
@@ -58,15 +57,6 @@ func logDebug(pdc *pdConfig, level string, msg string) {
 		}
 	}
 }
-
-// faasResponse formats a message before it is returned by the handler function.
-func faasResponse(stat, msg string) faasResp {
-	return faasResp{status: stat, message: msg}
-}
-
-// func pagerDuty(conn, obj) {
-// 	// Make POST request
-// }
 
 // Handle a function invocation.
 func Handle(req handler.Request) (handler.Response, error) {
