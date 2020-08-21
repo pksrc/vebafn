@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://veba.yourdomain.com
+functions:
+  echo-fn:
+    lang: golang-http
+    handler: ./handler
+    image: fgold/veba-go-echo:1
