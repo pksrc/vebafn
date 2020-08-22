@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://pdotk.ddns.net
+functions:
+  vm-config-tagger-fn:
+    lang: golang-http
+    handler: ./handler
+    image: fgold/veba-go-vm-config-tagger:1
+    environment:
+      write_debug: true
+    secrets:
+      - vcconfig
+    annotations:
+      topic: AlarmStatusChangedEvent
