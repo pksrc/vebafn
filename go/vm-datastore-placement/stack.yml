@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://veba.yourdomain.com
+functions:
+  vm-datastore-placement-fn:
+    lang: golang-http
+    handler: ./handler
+    image: fgold/veba-go-vm-datastore-placement:1
+    environment:
+      write_debug: true
+    secrets:
+      - vcconfig
+    annotations:
+      topic: AlarmStatusChangedEvent
