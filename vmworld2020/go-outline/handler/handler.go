@@ -6,6 +6,11 @@ import (
 	handler "github.com/openfaas/templates-sdk/go-http"
 )
 
+const (
+	pdConfigPath     = "/var/openfaas/secrets/pdconfig"
+	pagerdutyApiPath = "https://events.pagerduty.com/v2/enqueue"
+)
+
 // Handle a function invocation
 func Handle(req handler.Request) (handler.Response, error) {
 	// Parse the event

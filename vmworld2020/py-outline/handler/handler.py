@@ -9,9 +9,14 @@ def handle(req):
     #parse event
     
 
+    PAGERDUTY_CONFIG = '/var/openfaas/secrets/pdconfig'
     #read the config
     
 
     #implement business logic
+    PAGERDUTY_API = 'https://events.pagerduty.com/v2/enqueue'
+    #make a POST Rest API request to pagerduty
+    
+
 
     return
