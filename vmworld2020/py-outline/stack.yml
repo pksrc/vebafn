@@ -1,0 +1,13 @@
+version: 1.0
+provider:
+  name: openfaas                                  
+  gateway: https://VEBA_FQDN               # OpenFaaS URL (VEBA endpoint) 
+functions:
+  py-pagerduty-fn:                         # name of the function (unique to your k8s cluster)
+    lang: python3
+    handler: ./handler                     # folder name which has your scripts
+    image: pkbu/py-pd-vmworld:latest       # docker container to pull for this deployment
+    secrets:
+      - pdconfig                           # config information passed as k8s secret
+    annotations:
+      topic: "VmReconfiguredEvent"         # the event which should trigger this function
