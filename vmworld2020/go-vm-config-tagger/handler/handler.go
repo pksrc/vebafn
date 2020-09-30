@@ -56,7 +56,7 @@ func Handle(req handler.Request) (handler.Response, error) {
 	}
 
 	// Determine if data AlarmStatusChangedEvent is correct.
-	if !isStorageInAlarm(cloudEvt) {
+	if !isCpuOrMemoryAlarm(cloudEvt) {
 		message := "Alert not for CPU/Memory in red, nothing to do."
 		log.Println(message)
 
@@ -168,7 +168,7 @@ func isValidEvent(event cloudEvent) error {
 	return nil
 }
 
-func isStorageInAlarm(event cloudEvent) bool {
+func isCpuOrMemoryAlarm(event cloudEvent) bool {
 	alarm := false
 
 	if event.Data.To == "red" && (event.Data.Alarm.Name == "VM Memory Usage" || event.Data.Alarm.Name == "VM CPU Usage") {
