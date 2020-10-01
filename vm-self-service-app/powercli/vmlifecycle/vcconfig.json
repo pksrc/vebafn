@@ -1,0 +1,5 @@
+{
+    "VC" : "vcsa.lab.pdotk.com",
+    "VC_USERNAME" : "administrator@vsphere.local",
+    "VC_PASSWORD" : "DontUseThisPassword"
+}

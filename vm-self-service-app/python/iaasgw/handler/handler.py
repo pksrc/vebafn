@@ -13,10 +13,9 @@ if(os.getenv("insecure_ssl")):
 l = Logger()
 
 ###
-# Any Global variables or  Paths and Endpoints
-# EDIT AS REQUIRED
-###
-CONFIG='/var/openfaas/secrets/vcconfig'
+# Global variables or  Paths and Endpoints
+##
+SLACK_SECRET = 'ReplaceWithSlackSecretKey' #this could be improved to be obtained from a config
 ### --------
 
 def handle(req):
@@ -61,7 +60,6 @@ def handle(req):
     signature = str(os.getenv('Http_X_Slack_Signature'))
     timestamp = str(os.getenv('Http_X_Slack_Request_Timestamp'))
     format_req = str.encode(f"v0:{timestamp}:{req}")
-    SLACK_SECRET = '097d3f67da972dd18e133db109902879'
     encoded_secret = str.encode(SLACK_SECRET)
     request_hash = hmac.new(encoded_secret, format_req, hashlib.sha256).hexdigest()
     calculated_signature = f"v0={request_hash}"
@@ -95,7 +93,7 @@ def handle(req):
     # For security purposes, we'll send a shared key which will be verified in the VM function (this could be passed as a config)
     ###
     l.log('INFO', 'Attempting Command:{0}'.format(obj['text']))
-    #https://www.guidgenerator.com/online-guid-generator.aspx 
+    #https://www.guidgenerator.com/online-guid-generator.aspx to produce a 30 digit random GUID
     obj['key']='2F232EB71D584140B9529460340FCFE4' 
     if('echo' in obj['text']):
         try:

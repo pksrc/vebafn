@@ -1,7 +1,7 @@
 version: 1.0
 provider:
   name: openfaas                                  
-  gateway: https://pdotk.ddns.net              # OpenFaaS URL (VEBA endpoint) 
+  gateway: https://pdotk.lab.net              # OpenFaaS URL (VEBA endpoint) 
 functions:
   python-pagerduty-fn:                         # name of the function (unique to your k8s cluster)
     lang: python3
