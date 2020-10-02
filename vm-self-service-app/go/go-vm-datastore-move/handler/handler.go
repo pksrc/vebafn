@@ -16,7 +16,7 @@ import (
 	"github.com/vmware/govmomi/vim25/types"
 )
 
-const secretPath = "/var/openfaas/secrets/vcconfigtoml"
+const secretPath = "/var/openfaas/secrets/vcconfig"
 
 // Handle a function invocation
 func Handle(req handler.Request) (handler.Response, error) {
