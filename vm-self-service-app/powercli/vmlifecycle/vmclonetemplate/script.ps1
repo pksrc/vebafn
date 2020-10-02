@@ -11,7 +11,7 @@ $inputArr = $json.text.split($separator,$option)
 # Validate that the request is indeed from the Gateway function before allowing any critical functionality
 if(("2F232EB71D584140B9529460340FCFE4" -eq $json.key) -and ("clonetemplate" -eq $inputArr[0].trim())) {
     # Fetch the VC Credentials
-    $VC_CONFIG_FILE = "/var/openfaas/secrets/vcconfig"
+    $VC_CONFIG_FILE = "/var/openfaas/secrets/vcconfigjson"
 
     $VC_CONFIG = (Get-Content -Raw -Path $VC_CONFIG_FILE | ConvertFrom-Json)
     if($env:function_debug -eq "true") {

@@ -39,7 +39,7 @@ if __name__ == "__main__":
     #COPYING FILE to where the function expects the secrets/config
     #make sure to have a folder created with write permissions
     #src = CONFIG
-    #dst= "/var/openfaas/secrets/vcconfig"
+    #dst= "/var/openfaas/secrets/vcconfigjson"
     #copyfile(src, dst)
   
     #Testing all test cases

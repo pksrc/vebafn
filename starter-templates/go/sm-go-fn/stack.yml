@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://veba.yourdomain.com
+functions:
+  sm-go-fn:
+    lang: golang-http
+    handler: ./sm-go-fn
+    image: fgold/sm-faas-fn:1

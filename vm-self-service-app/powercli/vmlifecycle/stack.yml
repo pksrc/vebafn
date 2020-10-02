@@ -15,7 +15,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-clonevm:
@@ -30,7 +30,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-vmclonetemplate:
@@ -45,7 +45,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-poweronvm:
@@ -60,7 +60,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-poweroffvm:
@@ -75,7 +75,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-rebootvm:
@@ -90,7 +90,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-deletevm:
@@ -105,7 +105,7 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
   powercli-setvm:
@@ -120,6 +120,6 @@ functions:
       write_timeout: 20s
       exec_timeout: 20s
     secrets:
-      - vcconfig
+      - vcconfigjson
     annotations:
       topic: EnteredMaintenanceModeEvent, ExitMaintenanceModeEvent
