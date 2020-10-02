@@ -10,6 +10,6 @@ functions:
     environment:
       write_debug: true
     secrets:
-      - vcconfigtoml
+      - vcconfig
     annotations:
       topic: AlarmStatusChangedEvent
